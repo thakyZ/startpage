@@ -10,13 +10,13 @@ var searchQuery = $("#search-bar").val();
 });
 
 if (localStorage.getItem("locCity") == null) {
-	localStorage.setItem("locCity", "lake stevens")
+	localStorage.setItem("locCity", "lake stevens");
 }
 if (localStorage.getItem("locCountry") == null) {
-	localStorage.setItem("locCountry", "us")
+	localStorage.setItem("locCountry", "us");
 }
 if (localStorage.getItem("unit") == null) {
-	localStorage.setItem("unit", "&deg;C")
+	localStorage.setItem("unit", "&deg;C");
 	$("#cel").attr('checked', 'checked');
 } else if(localStorage.getItem("unit") == "&deg;C") {
 	$("#cel").attr('checked', 'checked');
@@ -26,7 +26,7 @@ if (localStorage.getItem("unit") == null) {
 
 var baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 var city = localStorage.getItem('locCity');
-var country = localStorage.getItem('locCountry')
+var country = localStorage.getItem('locCountry');
 var key = "&APPID=exmaplePass";
 var apiurl = baseURL + city + "," + country + key;
 var unit = localStorage.getItem('unit');
@@ -37,7 +37,7 @@ $(".entercountry").attr("value", country);
 function getWeather() {
 	var baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
 	var city = localStorage.getItem('locCity');
-	var country = localStorage.getItem('locCountry')
+	var country = localStorage.getItem('locCountry');
 	var key = "&APPID=exmaplePass";
 	var apiurl = baseURL + city + "," + country + key;
 	var unit = localStorage.getItem('unit');
@@ -78,7 +78,7 @@ $("#save").click(function(){
 
 var date = new Date();
 var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"]
+var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 var weekday = weekdays[date.getDay()];
 var month = date.getMonth();
 var monthday = date.getDate();
