@@ -1,0 +1,17 @@
+{
+  "timezone": "GMT",
+  "weather": {
+    "city": "Unknown",
+    "country": "UNK",
+    "unit": "C",
+    "key": "<api key for OpenWeather>"
+  },
+  "reddit_feed": "<subreddit with 'r/'>",
+  "search": "<search url>",
+  "links": {
+    "default1": {
+      "default-link1": "https://www.example.com/",
+      "default-link2": "https://www2.example.com/"
+    }
+  }
+}

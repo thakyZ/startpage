@@ -1,0 +1,8 @@
+mixin list(links, cat, color)
+  div(class='link-container')
+    div(class='link-header')
+      a(class='link-text category link-category', style='border-right: 2px solid ' + color + ' !important;')= cat
+    div(class='link-list')
+      each link_var in links
+        include link.pug
+        +link(link_var.url, link_var.text, color)

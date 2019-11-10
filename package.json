@@ -1,0 +1,27 @@
+{
+  "name": "startpage",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app"
+  },
+  "description": "startpage",
+  "author": {
+    "name": "Nick Mullally"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "cookie-parser": "^1.4.0",
+    "debug": "^2.2.0",
+    "express": "^4.14.0",
+    "mathjs": "^6.2.3",
+    "moment": "^2.24.0",
+    "moment-holiday": "^1.5.1",
+    "morgan": "^1.7.0",
+    "promise": "^8.0.3",
+    "pug": "^2.0.0-beta6",
+    "request": "^2.88.0",
+    "serve-favicon": "^2.3.0",
+    "tinycolor2": "^1.4.1"
+  }
+}
