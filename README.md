@@ -1,3 +1,5 @@
-# startpage
+startpage
+---
 
+A personal startpage
 

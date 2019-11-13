@@ -1,0 +1,10 @@
+.vs/
+node_modules/
+obj/
+package-lock.json
+bin/
+*.user
+config/*
+!config/config.json.default
+compilerconfig.json*
+passwords.txt
