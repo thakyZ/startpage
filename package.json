@@ -1,14 +1,23 @@
 {
   "name": "startpage",
   "version": "1.0.0",
+  "main": "app.js",
   "private": true,
   "scripts": {
     "start": "node app"
   },
-  "description": "startpage",
+  "description": "A personal startpage",
   "author": {
     "name": "Nick Mullally"
   },
+  "keywords": [
+    "startpage",
+    "web",
+    "misc"
+  ],
+  "author": "thakyZ",
+  "license": "MIT",
+  "repo": "https://github.com/thakyZ/startpage",
   "dependencies": {
     "body-parser": "^1.15.0",
     "cookie-parser": "^1.4.0",
