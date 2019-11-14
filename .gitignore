@@ -1,0 +1,8 @@
+.vs/
+bin/
+config/
+node_modules/
+obj/
+package-lock.json
+passwords.txt
+*.user
