@@ -10,6 +10,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
+const fs = require('fs');
+
 var app = express();
 
 // view engine setup
@@ -24,6 +26,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'config')));
+
+const rimWorldAutoDocPath = "RimWorld/AutoDoc/1.1";
+
+try {
+    if (fs.existsSync(path.join(__dirname, rimWorldAutoDocPath + '/index.html'))) {
+        console.log("RimWorld AutoDoc file was found.")
+        app.use('/' + rimWorldAutoDocPath, express.static(path.join(__dirname, rimWorldAutoDocPath)));
+    } else {
+        console.warn("RimWorld AutoDoc file not found.");
+    }
+} catch(err) {
+    console.error(err);
+}
 
 app.use('/', routes);
 app.use('/users', users);
