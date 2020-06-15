@@ -41,6 +41,8 @@
     <Content Include="config\config.json">
       <SubType>Code</SubType>
     </Content>
+    <Content Include="invis.vbs" />
+    <Content Include="LICENSE" />
     <Content Include="public\images\background.gif" />
     <Content Include="public\javascripts\main.js" />
     <Content Include="public\javascripts\reddit.es5.js" />
@@ -73,6 +75,13 @@
     <Content Include="package.json" />
     <Content Include="public\stylesheets\main.css" />
     <Content Include="README.md" />
+    <Content Include="run.bat" />
+    <Content Include="run.sh">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="start-on-login.bat">
+      <SubType>Code</SubType>
+    </Content>
     <Content Include="views\index.pug" />
     <Content Include="views\layout.pug" />
     <Content Include="views\error.pug" />
