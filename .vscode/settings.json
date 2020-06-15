@@ -1,0 +1,23 @@
+{
+  "cSpell.words": [
+    "apikey",
+    "apiurl",
+    "htmltools",
+    "monthday",
+    "njsproj",
+    "postnum",
+    "searchbar",
+    "shorttitle",
+    "stacktraces",
+    "startpage",
+    "subreddit",
+    "tinycolor",
+    "updatepost"
+  ],
+  "files.trimTrailingWhitespace": false,
+  "markdownlint.config": {
+    "MD009": {
+      "br_spaces": 3
+    }
+  }
+}
