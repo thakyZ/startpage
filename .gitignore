@@ -9,3 +9,4 @@ config/*
 compilerconfig.json*
 passwords.txt
 RimWorld/AutoDoc/1.1/index.html
+loc.txt
