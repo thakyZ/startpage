@@ -1,0 +1,8 @@
+mixin copies(copies, cat, color)
+  div(class='link-container')
+    div(class='link-header')
+      a(class='link-text category link-category', style='border-right: 2px solid ' + color + ' !important;')= cat
+    div(class='link-list')
+      each copy_var in copies
+        include copy.pug
+        +copy(copy_var.string, copy_var.text, color)

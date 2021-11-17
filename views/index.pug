@@ -32,3 +32,12 @@ block content
           else if listObject.type === 'link'
             include list.pug
             +list(listObject.links, listObject.cat, listObject.color)
+  div(id='bottom')
+    div(class='container-rect')
+      div(id='links')
+        each listObject in copies
+          if listObject.type === 'separator'
+            include separator.pug
+          else if listObject.type === 'copy'
+            include copies.pug
+            +copies(listObject.copies, listObject.cat, listObject.color)

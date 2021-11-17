@@ -133,7 +133,6 @@ a {
 }
 
 #top {
-  position: relative;
   background: #191919;
   height: 130px;
   width: 900px;
@@ -144,9 +143,8 @@ a {
 }
 
 #bottom {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
+  display: inline list-item;
+  transform: translateY(25%);
   width: 100%;
 }
 

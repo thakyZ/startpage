@@ -1,0 +1,6 @@
+mixin copy(string, text, color)
+  div
+    a(id='link-url', onClick="copyTextToClipboard('"+string+"');return false;" href="#")
+      - var tinycolor = require("tinycolor2");
+      - var color_lum = tinycolor().lighten(50).toHexString();
+      span(class='link-text link' style='cursor: pointer; transition: color 0.5s ease;' onMouseOver='this.style.color=\'' + (tinycolor(color).lighten(30).toHexString()) + '\'' onMouseOut='this.style.color=\'#F7F7F7\'')= text
