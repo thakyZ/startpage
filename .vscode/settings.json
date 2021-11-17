@@ -19,5 +19,10 @@
     "MD009": {
       "br_spaces": 3
     }
+  },
+  "jshint.options": {
+    "browser": false,
+    "node": true,
+    "esversion": 8
   }
 }
