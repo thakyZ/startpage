@@ -1,155 +1,152 @@
-$(document).ready(function(){
+$(document).ready(function () {
+  $(".container-rect").addClass("animated bounceInUp");
 
-$(".container-rect").addClass("animated bounceInUp");
+  $("#search-bar").keypress(function (event) {
+    var searchQuery = $("#search-bar").val();
+    if (event.which == 13) {
+      window.location.href = "http://www.google.com/search?q=" + searchQuery;
+    }
+  });
 
-$("#search-bar").keypress(function(event) {
-var searchQuery = $("#search-bar").val();
-  if ( event.which == 13 ) {
-    window.location.href = 'http://www.google.com/search?q=' + searchQuery;
+  if (localStorage.getItem("locCity") == null) {
+    localStorage.setItem("locCity", "lake stevens");
+  }
+  if (localStorage.getItem("locCountry") == null) {
+    localStorage.setItem("locCountry", "us");
+  }
+  if (localStorage.getItem("unit") == null) {
+    localStorage.setItem("unit", "&deg;C");
+    $("#cel").attr("checked", "checked");
+  } else if (localStorage.getItem("unit") == "&deg;C") {
+    $("#cel").attr("checked", "checked");
+  } else if (localStorage.getItem("unit") == "&deg;F") {
+    $("#far").attr("checked", "checked");
+
+    var date = new Date();
+    var weekdays = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday",
+    ];
+    var months = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    var weekday = weekdays[date.getDay()];
+    var month = date.getMonth();
+    var monthday = date.getDate();
+    var year = date.getYear();
+
+    $("#weekday").html(weekday);
+
+    switch (monthday) {
+      case 1:
+      case 21:
+      case 31:
+        $("#month-date").html(
+          months[month] +
+            " " +
+            monthday +
+            "<sup>" +
+            "st" +
+            "</sup> " +
+            (year + 1900)
+        );
+        break;
+      case 2:
+      case 22:
+        $("#month-date").html(
+          months[month] +
+            " " +
+            monthday +
+            "<sup>" +
+            "nd" +
+            "</sup> " +
+            (year + 1900)
+        );
+        break;
+      case 3:
+      case 23:
+        $("#month-date").html(
+          months[month] +
+            " " +
+            monthday +
+            "<sup>" +
+            "rd" +
+            "</sup> " +
+            (year + 1900)
+        );
+        break;
+      case 4:
+      case 5:
+      case 6:
+      case 7:
+      case 8:
+      case 9:
+      case 10:
+      case 11:
+      case 12:
+      case 13:
+      case 14:
+      case 15:
+      case 16:
+      case 17:
+      case 18:
+      case 19:
+      case 20:
+      case 24:
+      case 25:
+      case 26:
+      case 27:
+      case 28:
+      case 29:
+      case 30:
+        $("#month-date").html(
+          months[month] +
+            " " +
+            monthday +
+            "<sup>" +
+            "th" +
+            "</sup> " +
+            (year + 1900)
+        );
+    }
   }
 });
 
-if (localStorage.getItem("locCity") == null) {
-	localStorage.setItem("locCity", "lake stevens");
+function copyTextToClipboard(text) {
+  if (window.clipboardData && window.clipboardData.setData) {
+    return clipboardData.setData("Text", text);
+  } else if (
+    document.queryCommandSupported &&
+    document.queryCommandSupported("copy")
+  ) {
+    var cliptextarea = document.createElement("textarea");
+    cliptextarea.textContent = text;
+    cliptextarea.style.position = "fixed";
+    document.body.appendChild(cliptextarea);
+    cliptextarea.focus();
+    cliptextarea.select();
+    try {
+      return document.execCommand("copy");
+    } catch (ex) {
+      return false;
+    } finally {
+      document.body.removeChild(cliptextarea);
+    }
+  }
 }
-if (localStorage.getItem("locCountry") == null) {
-	localStorage.setItem("locCountry", "us");
-}
-if (localStorage.getItem("unit") == null) {
-	localStorage.setItem("unit", "&deg;C");
-	$("#cel").attr('checked', 'checked');
-} else if(localStorage.getItem("unit") == "&deg;C") {
-	$("#cel").attr('checked', 'checked');
-} else if(localStorage.getItem("unit") == "&deg;F") {
-	$("#far").attr('checked', 'checked');
-}
-
-var baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-var city = localStorage.getItem('locCity');
-var country = localStorage.getItem('locCountry');
-var key = "&APPID=exmaplePass";
-var apiurl = baseURL + city + "," + country + key;
-var unit = localStorage.getItem('unit');
-
-$(".entercity").attr("value", city);
-$(".entercountry").attr("value", country);
-
-function getWeather() {
-	var baseURL = "https://api.openweathermap.org/data/2.5/weather?q=";
-	var city = localStorage.getItem('locCity');
-	var country = localStorage.getItem('locCountry');
-	var key = "&APPID=exmaplePass";
-	var apiurl = baseURL + city + "," + country + key;
-	var unit = localStorage.getItem('unit');
-
-	$.getJSON(apiurl,function(result){
-		var temp = result.main.temp;
-		if (localStorage.getItem("unit") == "&deg;C") {
-			temp = temp - 273.15;
-			temp = Math.round(temp);
-		} else if (localStorage.getItem("unit") == "&deg;F") {
-			temp = temp - 273.15;
-			temp = temp * 1.8;
-			temp = temp + 32;
-			temp = Math.round(temp);
-		}
-
-		$("#weather").empty().append(result.name + ": " + temp + unit + ", " + result.weather[0].description);
-	});
-}
-getWeather();
-
-$("#save").click(function(){
-	if ($('.entercity').length > 0 && $('.entercity').val() != '') {
-		localStorage.setItem("locCity", $(".entercity").val());
-	}
-	if ($('.entercountry').length > 0 && $('.entercountry').val() != '') {
-		localStorage.setItem("locCountry", $(".entercountry").val());
-	}
-	if ($('input[id=far]').is(":checked")) {
-		localStorage.setItem("unit", "&deg;F");
-	}
-	if ($('input[id=cel]').is(":checked")) {
-		localStorage.setItem("unit", "&deg;C");
-	}
-	getWeather();
-	$(".settings").slideToggle();
-});
-
-var date = new Date();
-var weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-var weekday = weekdays[date.getDay()];
-var month = date.getMonth();
-var monthday = date.getDate();
-var year = date.getYear();
-
-$('#weekday').html(weekday);
-
-switch (monthday) {
-	case 1:
-	case 21:
-	case 31:
-    	var affix = "st";
-		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
-    	break;
-	case 2:
-	case 22:
-    	var affix = "nd";
-		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
-    	break;
-	case 3:
-	case 23:
-     	var affix = "rd";
-		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
-   	break;
-	case 4:
-	case 5:
-	case 6:
-	case 7:
-	case 8:
-	case 9:
-	case 10:
-	case 11:
-	case 12:
-	case 13:
-	case 14:
-	case 15:
-	case 16:
-	case 17:
-	case 18:
-	case 19:
-	case 20:
-	case 24:
-	case 25:
-	case 26:
-	case 27:
-	case 28:
-	case 29:
-	case 30:
-   	var affix = "th";
-		$('#month-date').html(months[month] + " " + monthday + "<sup>" + affix + "</sup> " + (year+1900));
-}
-
-function btcprice() {
-var currency = "USD";
-var apiurl = 'https://api.coindesk.com/v1/bpi/currentprice/' + currency + '.json';
-
-$.ajax({
-  type: "GET",
-  url: apiurl,
-  async: false,
-  dataType: 'json',
-  success: function(data){
-    var price = data["bpi"][currency]["rate_float"];
-	  var priceRounded = Math.round(price);
-	  $("#btc-price").append("$" + priceRounded + " " + currency);
-    },
-  error: function(errorMessage){}
-});
-}
-btcprice();
-
-
-
-});
