@@ -4,7 +4,7 @@ html
     meta(charset='utf-8')
     title= title
     link(rel='stylesheet', href='/stylesheets/style.css')
-    link(rel='stylesheet', crossorigin='anonymous', href='https://cdn.materialdesignicons.com/2.8.94/css/materialdesignicons.min.css')
+    link(rel='stylesheet', crossorigin='anonymous', href='https://cdn.jsdelivr.net/npm/@mdi/font@2.8.94/css/materialdesignicons.min.css')
     link(rel='stylesheet', crossorigin='anonymous', href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css')
     script(charset='utf-8', crossorigin='anonymous', src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js')
     script.
@@ -12,5 +12,6 @@ html
       var subReddit = "!{subreddit}";
     script(charset='utf-8', crossorigin='anonymous', src='/javascripts/search.js')
     script(charset='utf-8', crossorigin='anonymous', src='/javascripts/reddit.js')
+    script(charset='utf-8', crossorigin='anonymous', src='/javascripts/main.js')
   body
     block content
