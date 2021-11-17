@@ -1,4 +1,5 @@
 'use strict';
+
 var path = require('path');
 var fs = require('fs');
 
@@ -12,4 +13,4 @@ console.log('*** PARSING CONFIG ***');
 json = JSON.parse(data);
 console.log('*** CONFIG PARSED ***');
 
-module.exports = { json: json, data: data }
+module.exports = { json: json, data: data };

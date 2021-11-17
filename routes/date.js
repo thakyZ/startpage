@@ -1,3 +1,5 @@
+'use strict';
+
 async function getDate() {
   return new Promise(function (resolve, reject) {
     var date = new Date();
@@ -13,18 +15,15 @@ async function getDate() {
       case 1:
       case 21:
       case 31:
-        var affix = "st";
-        text = `${weekday} ${months[month]} ${monthday}<sup>${affix}</sup> ${(year + 1900)}`;
+        text = `${weekday} ${months[month]} ${monthday}<sup>st</sup> ${(year + 1900)}`;
         break;
       case 2:
       case 22:
-        var affix = "nd";
-        text = `${weekday} ${months[month]} ${monthday}<sup>${affix}</sup> ${(year + 1900)}`;
+        text = `${weekday} ${months[month]} ${monthday}<sup>nd</sup> ${(year + 1900)}`;
         break;
       case 3:
       case 23:
-        var affix = "rd";
-        text = `${weekday} ${months[month]} ${monthday}<sup>${affix}</sup> ${(year + 1900)}`;
+        text = `${weekday} ${months[month]} ${monthday}<sup>rd</sup> ${(year + 1900)}`;
         break;
       case 4:
       case 5:
@@ -50,16 +49,14 @@ async function getDate() {
       case 28:
       case 29:
       case 30:
-        var affix = "th";
-        text = `${weekday} ${months[month]} ${monthday}<sup>${affix}</sup> ${(year + 1900)}`;
+        text = `${weekday} ${months[month]} ${monthday}<sup>th</sup> ${(year + 1900)}`;
     }
     resolve(text);
   });
 }
 
-module.export = { text: null };
+module.exports = { text: null };
 
 getDate().then(function (value) {
   module.exports.text = value;
-  //console.log(value);
 });

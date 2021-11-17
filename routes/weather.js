@@ -1,4 +1,5 @@
 'use strict';
+
 var request = require('request');
 var Promise = require('Promise');
 var math = require('mathjs');
@@ -46,5 +47,4 @@ module.exports = { text: null };
 
 weather().then(function (value) {
   module.exports.text = value;
-  //console.log(value);
 });

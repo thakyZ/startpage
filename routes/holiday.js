@@ -1,4 +1,5 @@
 'use strict';
+
 var holiday = require('moment-holiday');
 var moment = require('moment');
 var Promise = require('promise');
@@ -11,9 +12,8 @@ async function getHoliday() {
   });
 }
 
-module.exports = { text: null }
+module.exports = { text: null };
 
 getHoliday().then(function (value) {
   module.exports.text = value;
-  //console.log(value);
 });
